@@ -24,5 +24,35 @@ namespace European_Calculator
         {
             InitializeComponent();
         }
+        private void x(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void limit_Euro(object sender, RoutedEventArgs e)
+        {
+            bool limit;
+            if(Euro_Control.IsChecked == true)
+            {
+                limit = false;
+            }
+            else
+            {
+                limit = true;
+            }
+            BulPart.IsChecked = limit;
+            CroPart.IsChecked = limit;
+            CzePart.IsChecked = limit;
+            DenPart.IsChecked = limit;
+            HunPart.IsChecked = limit;
+            PolPart.IsChecked = limit;
+            RomPart.IsChecked = limit;
+            SwePart.IsChecked = limit;
+        }
+        private void Austria_Particpation(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
     }
 }
