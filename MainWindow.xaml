@@ -230,6 +230,15 @@
             <ComboBoxItem>Unanamity</ComboBoxItem>
         </ComboBox>
         <Label Content="Voting Rule:" HorizontalAlignment="Left" Margin="495,9.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Member Countries:" HorizontalAlignment="Left" Margin="495,65.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Yes: " HorizontalAlignment="Left" Height="25" Margin="568,96.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
+        <Label Content="No: " HorizontalAlignment="Left" Height="25" Margin="568,121,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Abstain: " HorizontalAlignment="Left" Height="25" Margin="545,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        
+        <Label Content="Population:" HorizontalAlignment="Left" Margin="495,196,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Yes: " HorizontalAlignment="Left" Height="25" Margin="568,221,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
+        <Label Content="No: " HorizontalAlignment="Left" Height="25" Margin="568,246,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Abstain: " HorizontalAlignment="Left" Height="25" Margin="545,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

@@ -21,6 +21,7 @@ namespace European_Calculator
     public partial class MainWindow : Window
     {
 
+        //Methods containing lists for all the different clickboxs
         public CheckBox[] EUParticipants()
         {
             CheckBox[] particpants = new CheckBox[]
@@ -63,11 +64,15 @@ namespace European_Calculator
             };
             return NonEuro;
         }
+        
+        //Initialize the main window for the 
         public MainWindow()
         {
             InitializeComponent();
         }
        
+        //checkbox methods
+        //currently needs attachments to main code
         private void limit_Euro(object sender, RoutedEventArgs e)
         {
             bool limit = true;
