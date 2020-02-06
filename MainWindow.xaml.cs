@@ -65,7 +65,7 @@ namespace European_Calculator
             return NonEuro;
         }
         
-        //Initialize the main window for the 
+        //Initialize the main window for the UI
         public MainWindow()
         {
             InitializeComponent();
@@ -73,6 +73,11 @@ namespace European_Calculator
        
         //checkbox methods
         //currently needs attachments to main code
+        
+
+        // Method Name: limit_Euro
+        // Return: Void
+        // Purpose: To uncheck all of the non eurozone countries and
         private void limit_Euro(object sender, RoutedEventArgs e)
         {
             bool limit = true;
@@ -89,10 +94,14 @@ namespace European_Calculator
                 vote[loc].IsChecked = limit;
             }
         }
+
+        // Method Name: Participation
+        // Return: Void
+        // Purpose: To control particpation, if participation is unchecked then vote or abstain is also unchecked
         private void Participaction(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            CheckBox[] participants = EUParticipants(),abstain = EUAbstain(), vote = EUVote(), NonEuro = NotEuro();
+            CheckBox[] participants = EUParticipants(),abstain = EUAbstain(), vote = EUVote();
             foreach(CheckBox country in participants)
             {
                 bool join = true;
@@ -107,11 +116,7 @@ namespace European_Calculator
                         abstain[count].IsChecked = false;
                         vote[count].IsChecked = join;
                     }
-                    if (NonEuro.Contains(country))
-                    {
-                        Euro_Control.IsChecked = false;
-                    }
-                    
+                    RemoveEurotag(country);
                     count++;
                 }
                 catch
@@ -122,6 +127,11 @@ namespace European_Calculator
             }
             
         }
+
+        // Method Name: Abstaining
+        // Return: Void
+        // Purpose: To control the abstain vote, if abstain is checked vote is unchecked
+        //          If particpation is unchecked and abstain is checked then then participation will turn on
         private void Abstaining(object sender, RoutedEventArgs e)
         {
             int count = 0;
@@ -140,11 +150,14 @@ namespace European_Calculator
                     if(participants[count].IsChecked == !abs )
                     {
                         participants[count].IsChecked = true;
+                        RemoveEurotag(participants[count]);
                     }
                     if(vote[count].IsChecked == true)
                     {
                         vote[count].IsChecked = !abs;
+                        RemoveEurotag(participants[count]);
                     }
+                    
                     count++;
                 }
                 catch
@@ -153,10 +166,15 @@ namespace European_Calculator
                 }
             }
         }
+
+        // Method Name: Voting
+        // Return: Void
+        // Purpose: Controls voting , if checked then abastain will be unchecked
+         //         If particpation is unchecked and voting is checked then then participation will turn on
         private void Voting(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            CheckBox[] participants = EUParticipants(), vote = EUVote(), NonEuro = NotEuro();
+            CheckBox[] participants = EUParticipants(), vote = EUVote(), Abstain = EUAbstain();
             foreach (CheckBox country in vote)
             {
                 bool vot = false;
@@ -169,10 +187,11 @@ namespace European_Calculator
                     if (participants[count].IsChecked == !vot)
                     {
                         participants[count].IsChecked = true;
-                        if (Euro_Control.IsChecked == true && NonEuro.Contains(country))
-                        {
-                            Euro_Control.IsChecked = false;
-                        }
+                        RemoveEurotag(participants[count]);
+                    }
+                    if(Abstain[count].IsChecked == vot)
+                    {
+                        Abstain[count].IsChecked = false;
                     }
                     count++;
                 }
@@ -180,6 +199,18 @@ namespace European_Calculator
                 {
                     break;
                 }
+            }
+        }
+
+        // Method Name: RemoveEurotag
+        // Return: Void
+        // Purpose: Will uncheck the eurozone check box if one of the non euro zone section is checked while the filter is on
+        private void RemoveEurotag(CheckBox country)
+        {
+            CheckBox[] nonEuro = NotEuro();
+            if (nonEuro.Contains(country))
+            {
+                Euro_Control.IsChecked = false;
             }
         }
 
