@@ -214,6 +214,33 @@ namespace European_Calculator
             }
         }
 
+        private void Update_numbers(object sender, RoutedEventArgs e)
+        {
+            int count = 0,  countries_yes = 27, countries_no = 0, countries_abs = 0;
+            CheckBox[] participants = EUParticipants(), vote = EUVote(), Abstain = EUAbstain();
+            foreach(CheckBox country in participants)
+            {
+                if (country.IsChecked == true && vote[count].IsChecked == true)
+                {
+                    countries_no += 1;
+                    countries_yes -= 1;
+
+                }
+                if (country.IsChecked == true && Abstain[count].IsChecked == true)
+                {
+                    countries_abs += 1;
+                    countries_yes -= 1;
+                }
+                if(country.IsChecked == false)
+                {
+                    countries_yes -= 1;
+                }
+                Mem_No.Content = $"No: {countries_yes}";
+                Mem_Yes.Content = $"Yes: {countries_no}";
+                Mem_Abs.Content = $"Abstain: {countries_abs}";
+                count++;
+            }
+        }
 
     }
 }
