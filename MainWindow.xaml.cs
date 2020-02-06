@@ -54,15 +54,20 @@ namespace European_Calculator
             };
             return Vote;
         }
+        public CheckBox[] NotEuro()
+        {
+            CheckBox[] NonEuro = new CheckBox[]
+            {
+
+              BulPart,CroPart,CzePart,DenPart,HunPart,PolPart,RomPart,SwePart
+            };
+            return NonEuro;
+        }
         public MainWindow()
         {
             InitializeComponent();
         }
        
-        private void x(object sender, RoutedEventArgs e)
-        {
-            
-        }
         private void limit_Euro(object sender, RoutedEventArgs e)
         {
             bool limit = true;
@@ -70,10 +75,7 @@ namespace European_Calculator
             {
                 limit = false;
             }
-            CheckBox[] participants = EUParticipants(),abstain = EUAbstain(), vote = EUVote(), NonEuro = new CheckBox[]
-            {
-                BulPart,CroPart,CzePart,DenPart,HunPart,PolPart,RomPart,SwePart
-            };
+            CheckBox[] participants = EUParticipants(), abstain = EUAbstain(), vote = EUVote(), NonEuro = NotEuro();
             foreach(CheckBox nonEUCountry in NonEuro)
             {
                 nonEUCountry.IsChecked = limit;
@@ -85,7 +87,7 @@ namespace European_Calculator
         private void Participaction(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            CheckBox[] participants = EUParticipants(),abstain = EUAbstain(), vote = EUVote();
+            CheckBox[] participants = EUParticipants(),abstain = EUAbstain(), vote = EUVote(), NonEuro = NotEuro();
             foreach(CheckBox country in participants)
             {
                 bool join = true;
@@ -95,8 +97,16 @@ namespace European_Calculator
                 }
                 try
                 {
-                    abstain[count].IsChecked = false;
-                    vote[count].IsChecked = join;
+                    if(country.IsChecked== false )
+                    {
+                        abstain[count].IsChecked = false;
+                        vote[count].IsChecked = join;
+                    }
+                    if (NonEuro.Contains(country))
+                    {
+                        Euro_Control.IsChecked = false;
+                    }
+                    
                     count++;
                 }
                 catch
@@ -114,17 +124,21 @@ namespace European_Calculator
             foreach (CheckBox country in abstain)
             {
                 bool abs = false;
-                if (country.IsChecked == true)
+                if (country.IsChecked == true )
                 {
                     abs = true;
                 }
                 try
-                {
-
-                    vote[count].IsChecked = !abs;
-                    if(participants[count].IsChecked == false)
+                { 
+                    
+                    
+                    if(participants[count].IsChecked == !abs )
                     {
                         participants[count].IsChecked = true;
+                    }
+                    if(vote[count].IsChecked == true)
+                    {
+                        vote[count].IsChecked = !abs;
                     }
                     count++;
                 }
@@ -137,21 +151,23 @@ namespace European_Calculator
         private void Voting(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            CheckBox[] participants = EUParticipants(), abstain = EUAbstain(), vote = EUVote();
+            CheckBox[] participants = EUParticipants(), vote = EUVote(), NonEuro = NotEuro();
             foreach (CheckBox country in vote)
             {
-                bool abs = false;
+                bool vot = false;
                 if (country.IsChecked == true)
                 {
-                    abs = true;
+                    vot = true;
                 }
                 try
                 {
-
-                    abstain[count].IsChecked = !abs;
-                    if (participants[count].IsChecked == false)
+                    if (participants[count].IsChecked == !vot)
                     {
                         participants[count].IsChecked = true;
+                        if (Euro_Control.IsChecked == true && NonEuro.Contains(country))
+                        {
+                            Euro_Control.IsChecked = false;
+                        }
                     }
                     count++;
                 }
