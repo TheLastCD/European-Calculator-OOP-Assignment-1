@@ -21,7 +21,10 @@ namespace European_Calculator
     public partial class MainWindow : Window
     {
 
-        //Methods containing lists for all the different clickboxs
+        //Methods containing lists for all the different clickboxes
+        //These lists are used to find which checkbox was checked allowing me to
+        //greatly decrease the number of methods required from around 81 to 10
+        Main Initiate = new Main();
         public CheckBox[] EUParticipants()
         {
             CheckBox[] particpants = new CheckBox[]
@@ -68,6 +71,8 @@ namespace European_Calculator
         //Initialize the main window for the UI
         public MainWindow()
         {
+            
+            Initiate.Create();
             InitializeComponent();
         }
        
@@ -77,7 +82,7 @@ namespace European_Calculator
 
         // Method Name: limit_Euro
         // Return: Void
-        // Purpose: To uncheck all of the non eurozone countries and
+        // Purpose: To uncheck all of the non eurozone countries
         private void limit_Euro(object sender, RoutedEventArgs e)
         {
             bool limit = true;
@@ -93,6 +98,7 @@ namespace European_Calculator
                 abstain[loc].IsChecked = false;
                 vote[loc].IsChecked = limit;
             }
+            Update_numbers();
         }
 
         // Method Name: Participation
@@ -117,6 +123,7 @@ namespace European_Calculator
                         vote[count].IsChecked = join;
                     }
                     RemoveEurotag(country);
+                    Update_numbers();
                     count++;
                 }
                 catch
@@ -157,7 +164,7 @@ namespace European_Calculator
                         vote[count].IsChecked = !abs;
                         RemoveEurotag(participants[count]);
                     }
-                    
+                    Update_numbers();
                     count++;
                 }
                 catch
@@ -193,6 +200,7 @@ namespace European_Calculator
                     {
                         Abstain[count].IsChecked = false;
                     }
+                    Update_numbers();
                     count++;
                 }
                 catch
@@ -211,10 +219,15 @@ namespace European_Calculator
             if (nonEuro.Contains(country))
             {
                 Euro_Control.IsChecked = false;
+                Update_numbers();
             }
         }
 
-        private void Update_numbers(object sender, RoutedEventArgs e)
+        // Method  Name: Update_numbers
+        // Return: void
+        // Purpose: This method is responsible for updating the number of countries particpating, voting yes, or voting no
+        //          Updates live
+        private void Update_numbers()
         {
             int count = 0,  countries_yes = 27, countries_no = 0, countries_abs = 0;
             CheckBox[] participants = EUParticipants(), vote = EUVote(), Abstain = EUAbstain();
@@ -224,16 +237,25 @@ namespace European_Calculator
                 {
                     countries_no += 1;
                     countries_yes -= 1;
+                    Initiate.VoteChange(count,true);
 
                 }
                 if (country.IsChecked == true && Abstain[count].IsChecked == true)
                 {
                     countries_abs += 1;
                     countries_yes -= 1;
+                    Initiate.AbstainChange(count);
+                    
                 }
                 if(country.IsChecked == false)
                 {
                     countries_yes -= 1;
+                    Initiate.PartispantChange(count);
+                }
+                if (country.IsChecked == true && vote[count].IsChecked == false)
+                {
+                    Initiate.VoteChange(count, false);
+
                 }
                 Mem_No.Content = $"No: {countries_yes}";
                 Mem_Yes.Content = $"Yes: {countries_no}";
