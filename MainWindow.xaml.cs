@@ -227,6 +227,7 @@ namespace European_Calculator
         // Return: void
         // Purpose: This method is responsible for updating the number of countries particpating, voting yes, or voting no
         //          Updates live
+        //          Purely visual but also triggers the methods that update the Country structure
         private void Update_numbers()
         {
             int count = 0,  countries_yes = 27, countries_no = 0, countries_abs = 0;
