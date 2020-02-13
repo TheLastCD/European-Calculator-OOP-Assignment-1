@@ -70,7 +70,7 @@ namespace European_Calculator
         //Purpose: to log changes to the abstaining from a vote
         public void AbstainChange(int loc)
         {
-            EuCountries[loc].Position = CountryPosition.Abstain; 
+            EuCountries[loc].Position = CountryPosition.Abstain;
         }
     }
 }
