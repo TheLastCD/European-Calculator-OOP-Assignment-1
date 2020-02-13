@@ -75,9 +75,6 @@ namespace European_Calculator
             Initiate.Create();
             InitializeComponent();
         }
-       
-        //checkbox methods
-        //currently needs attachments to main code
         
 
         // Method Name: limit_Euro
