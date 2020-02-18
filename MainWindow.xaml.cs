@@ -224,7 +224,7 @@ namespace European_Calculator
         //          Purely visual but also triggers the methods that update the Country structure
         private void Update_numbers()
         {
-            int count = 0,  countries_yes = EUParticipants().Count(), countries_no = 0, countries_abs = 0;
+            int count = 0,  countries_yes = EUParticipants().Count(), countries_no = 0, countries_abs = 0, total = EUParticipants().Count();
             foreach(CheckBox country in EUParticipants())
             {
                 if (country.IsChecked == true && EUVote()[count].IsChecked == true)
@@ -234,16 +234,10 @@ namespace European_Calculator
                     Initiate.VoteChange(count,true);
 
                 }
-                if (country.IsChecked == true && EUAbstain()[count].IsChecked == true)
-                {
-                    countries_abs += 1;
-                    countries_yes -= 1;
-                    Initiate.AbstainChange(count);
-                    
-                }
                 if(country.IsChecked == false)
                 {
                     countries_yes -= 1;
+                    total -= 1;
                     Initiate.PartispantChange(count);
                 }
                 if (country.IsChecked == true && EUVote()[count].IsChecked == false)
@@ -251,9 +245,18 @@ namespace European_Calculator
                     Initiate.VoteChange(count, false);
 
                 }
+                if (country.IsChecked == true && EUAbstain()[count].IsChecked == true)
+                {
+                    countries_abs += 1;
+                    countries_yes -= 1;
+                    Initiate.AbstainChange(count);
+
+                }
+
                 Mem_No.Content = $"No: {countries_yes}";
                 Mem_Yes.Content = $"Yes: {countries_no}";
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
+                Mem_Total.Content = $"Total: {total}";
                 count++;
             }
         }

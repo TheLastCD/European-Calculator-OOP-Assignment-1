@@ -10,7 +10,7 @@ namespace European_Calculator
     class Main
     {
         //Creating the list that contains the countries and structures
-        Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count()+1];
+        public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count()+1];
         public enum Majority_System
         {
             qual,
@@ -80,5 +80,6 @@ namespace European_Calculator
         {
             EuCountries[loc].Position = CountryPosition.Abstain;
         }
+
     }
 }
