@@ -223,14 +223,14 @@
             </Grid>
         </ScrollViewer>
         <CheckBox Name="Euro_Control" Content="Only Eurozone" HorizontalAlignment="Left" Margin="446,15,0,0" VerticalAlignment="Top" Click="limit_Euro"/>
-        <ComboBox Margin="568,11.667,53,408" Grid.Row="1" Height="25" Width="180">
-            <ComboBoxItem IsSelected="True">Qualified Majority</ComboBoxItem>
-            <ComboBoxItem>Reinforced Qualified Majority</ComboBoxItem>
-            <ComboBoxItem>Simple Majority</ComboBoxItem>
-            <ComboBoxItem>Unanamity</ComboBoxItem>
+        <ComboBox Name ="Voting_Rules" SelectionChanged="Vote_Rule" Margin="568,11.667,53,408" Grid.Row="1" Height="25" Width="180">
+            <ComboBoxItem Name="qualifiedmajority"  IsSelected="True">Qualified Majority</ComboBoxItem>
+            <ComboBoxItem Name="reinforcedqualifiedmajority">Reinforced Qualified Majority</ComboBoxItem>
+            <ComboBoxItem Name="simplemajority">Simple Majority</ComboBoxItem>
+            <ComboBoxItem Name="Unam">Unanamity</ComboBoxItem>
         </ComboBox>
-        <Label Content="Voting Rule:" HorizontalAlignment="Left" Margin="495,9.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Member Countries:" HorizontalAlignment="Left" Margin="495,65.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Name ="voters" Content="Voting Rule:" HorizontalAlignment="Left" Margin="495,9.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Name="test" Content="Member Countries:" HorizontalAlignment="Left" Margin="495,65.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
         <Label Name="Mem_Yes" Content="Yes: 27" HorizontalAlignment="Left" Height="25" Margin="568,96.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
         <Label Name="Mem_No"  Content="No: 0" HorizontalAlignment="Left" Height="25" Margin="568,121,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
         <Label Name="Mem_Abs" Content="Abstain: 0" HorizontalAlignment="Left" Height="25" Margin="545,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>

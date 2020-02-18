@@ -24,6 +24,7 @@ namespace European_Calculator
         //Methods containing lists for all the different clickboxes
         //These lists are used to find which checkbox was checked allowing me to
         //greatly decrease the number of methods required from around 81 to 10
+        // while maintaining a BigO of O(n)
         Main Initiate = new Main();
         public CheckBox[] EUParticipants()
         {
@@ -255,6 +256,37 @@ namespace European_Calculator
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
                 count++;
             }
+        }
+
+        private void Vote_Rule(object sender, RoutedEventArgs e)
+        {
+            string VoteState = Voting_Rules.SelectedValue.ToString().ToLower();
+            try
+            {
+                switch (VoteState.Remove(0, 38))
+                {
+                    case "qualified majority":
+                        Initiate.vote_system = Main.Majority_System.qual;
+                        break;
+                    case "reinforced qualified majority":
+                        Initiate.vote_system = Main.Majority_System.rein;
+                        break;
+                    case "simple majority":
+                        Initiate.vote_system = Main.Majority_System.sim;
+                        break;
+                    case "unanamity":
+                        Initiate.vote_system = Main.Majority_System.unam;
+                        break;
+                    default:
+                        break;
+                }
+                Update_numbers();
+            }
+            catch
+            {
+
+            }
+
         }
 
     }

@@ -11,6 +11,14 @@ namespace European_Calculator
     {
         //Creating the list that contains the countries and structures
         Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count()+1];
+        public enum Majority_System
+        {
+            qual,
+            rein,
+            sim,
+            unam,
+        }
+        public Majority_System vote_system = Majority_System.qual;
         
         //Method Name: Create
         //Return: Void
