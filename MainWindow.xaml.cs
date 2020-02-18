@@ -256,7 +256,30 @@ namespace European_Calculator
                 Mem_No.Content = $"No: {countries_yes}";
                 Mem_Yes.Content = $"Yes: {countries_no}";
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
-                //Mem_Total.Content = $"Total: {total}";
+                IfPass();
+                Mem_Total.Content = $"Total: {total}";
+
+
+
+
+                var NotParticpating = from state in Initiate.EuCountries
+                                      where state.Position.ToString() == "Notparticpating"
+                                      select state.Population;
+                double notparpop= 0, totalPercentage = 0;
+                foreach (int notpop in NotParticpating)
+                {
+                    notparpop += notpop;
+                }
+                int PercentageParticpating = Convert.ToInt32(Initiate.PopulationTotal - notparpop);
+                var _for = from state in Initiate.EuCountries
+                           where state.Position.ToString() == "Yes"
+                           select state;
+                foreach (var ParticpatingCountry in _for)
+                {
+                    totalPercentage += Math.Round((double)(ParticpatingCountry.Population / PercentageParticpating), 2);
+                }
+                test.Content = ;
+
                 count++;
             }
         }
@@ -290,6 +313,18 @@ namespace European_Calculator
 
             }
 
+        }
+
+        public void IfPass()
+        {
+            if (Initiate.Population_Check(Initiate.vote_system) && Initiate.Member_States_Check(Initiate.vote_system))
+            {
+                Pass_Marker.Content = "Approved";
+            }
+            else
+            {
+                Pass_Marker.Content = "Denied";
+            }
         }
 
     }

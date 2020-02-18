@@ -240,6 +240,7 @@
         <Label Name="Pop_No" Content="No: 0" HorizontalAlignment="Left" Height="25" Margin="568,246,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Label Name="Pop_Abs" Content="Abstain: 0" HorizontalAlignment="Left" Height="25" Margin="545,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="Mem_Total" Content="Total: 27" HorizontalAlignment="Left" Height="25" Margin="568,98.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="55"/>
+        <Label Name ="Pass_Marker" Content="Pass" HorizontalAlignment="Left" Height="44" Margin="523,331.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176"/>
 
     </Grid>
 </Window>

@@ -19,6 +19,7 @@ namespace European_Calculator
             unam,
         }
         public Majority_System vote_system = Majority_System.qual;
+        public int PopulationTotal = 0;
 
         
         //Method Name: Create
@@ -32,10 +33,11 @@ namespace European_Calculator
             foreach (string line in File.ReadLines(@"ListOfCountries"))
             {
                 string[] countryAndPerc = line.Split();
-                float population;
+                int population;
                 try
                 {
-                    population = float.Parse(countryAndPerc[1]);
+                    population = Convert.ToInt32(countryAndPerc[1]);
+                    PopulationTotal += population;
                 }
                 catch
                 {
@@ -158,7 +160,7 @@ namespace European_Calculator
         }
         public bool Population_Check(Majority_System Majority)
         {
-            double votelocation = majoritychoose(Majority, false), notparpop = 0;
+            double votelocation = majoritychoose(Majority, false), notparpop = 0, totalPercentage = 0;
             var NotParticpating = from state in EuCountries
                                   where state.Position.ToString() == "Notparticpating"
                                   select state.Population;
@@ -171,17 +173,26 @@ namespace European_Calculator
             var Abstainer = from state in EuCountries
                           where state.Position.ToString() == "Abstain"
                           select state;
-            foreach (var notpop in NotParticpating)
+            foreach (int notpop in NotParticpating)
             {
                 notparpop += notpop;
             }
-            double percentage_thing = (100 - notparpop);
-
-
-
-
+            int PercentageParticpating = Convert.ToInt32(PopulationTotal- notparpop);
+            foreach(var ParticpatingCountry in _for)
+            {
+                totalPercentage += Math.Round((double)(ParticpatingCountry.Population / PercentageParticpating),2);
+            }
+            if (totalPercentage >= votelocation)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
+
 
     }
 }
