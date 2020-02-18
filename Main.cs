@@ -19,6 +19,10 @@ namespace European_Calculator
             unam,
         }
         public Majority_System vote_system = Majority_System.qual;
+        (double, double)[] majsystem = new (double, double)[]
+        {
+            (0.55,0.65),(0.72,0.65),(0.5,0),(1,0)
+        };
         
         //Method Name: Create
         //Return: Void
@@ -79,6 +83,50 @@ namespace European_Calculator
         public void AbstainChange(int loc)
         {
             EuCountries[loc].Position = CountryPosition.Abstain;
+        }
+
+        public bool Member_States_Check(Majority_System Majority)
+        {
+            int votelocation = majoritychoose(Majority);
+            var abstainer = from state in EuCountries
+                            where state.Position.ToString() == "Abstain"
+                            select state;
+            var _for = from state in EuCountries
+                            where state.Position.ToString() == "Yes"
+                            select state;
+            var against = from state in EuCountries
+                            where state.Position.ToString() == "No"
+                            select state;
+            var NotParticpating = from state in EuCountries
+                          where state.Position.ToString() == "Notparticpating"
+                          select state;
+            
+            
+
+
+
+
+        }
+        public int majoritychoose(Majority_System Majority)
+        {
+            switch (Majority.ToString())
+            {
+                case "qual":
+                    return 0;
+                    break;
+                case "rein":
+                    return 1;
+                    break;
+                case "sim":
+                    return 2;
+                    break;
+                case "unam":
+                    return 3;
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
         }
 
     }

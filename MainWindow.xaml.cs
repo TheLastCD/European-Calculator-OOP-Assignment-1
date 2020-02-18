@@ -257,6 +257,7 @@ namespace European_Calculator
                 Mem_Yes.Content = $"Yes: {countries_no}";
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
                 Mem_Total.Content = $"Total: {total}";
+                test.Content = Initiate.Member_States_Check();
                 count++;
             }
         }
