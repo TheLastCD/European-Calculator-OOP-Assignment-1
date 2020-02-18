@@ -19,10 +19,7 @@ namespace European_Calculator
             unam,
         }
         public Majority_System vote_system = Majority_System.qual;
-        (double, double)[] majsystem = new (double, double)[]
-        {
-            (0.55,0.65),(0.72,0.65),(0.5,0),(1,0)
-        };
+
         
         //Method Name: Create
         //Return: Void
@@ -87,46 +84,103 @@ namespace European_Calculator
 
         public bool Member_States_Check(Majority_System Majority)
         {
-            int votelocation = majoritychoose(Majority);
-            var abstainer = from state in EuCountries
-                            where state.Position.ToString() == "Abstain"
-                            select state;
+            double votelocation = majoritychoose(Majority, true);
             var _for = from state in EuCountries
                             where state.Position.ToString() == "Yes"
-                            select state;
-            var against = from state in EuCountries
-                            where state.Position.ToString() == "No"
                             select state;
             var NotParticpating = from state in EuCountries
                           where state.Position.ToString() == "Notparticpating"
                           select state;
-            
-            
+            int Pass_Mark = Convert.ToInt32(Math.Ceiling((27 - NotParticpating.Count())* votelocation));
+            if (_for.Count()  >= Pass_Mark)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
 
 
 
 
         }
-        public int majoritychoose(Majority_System Majority)
+        public double majoritychoose(Majority_System Majority, bool iscountry)
         {
             switch (Majority.ToString())
             {
                 case "qual":
-                    return 0;
+                    if (iscountry)
+                    {
+                        return 0.55;
+                    }
+                    else
+                    {
+                        return 0.65;
+                    }
                     break;
                 case "rein":
-                    return 1;
+                    if (iscountry)
+                    {
+                        return 0.72;
+                    }
+                    else
+                    {
+                        return 0.65;
+                    }
                     break;
                 case "sim":
-                    return 2;
+                    if (iscountry)
+                    {
+                        return 0.5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                     break;
                 case "unam":
-                    return 3;
+                    if (iscountry)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                     break;
                 default:
                     return 0;
                     break;
+                    //[[0.55,0.65],[0.72,0.65],[0.5,0],[1,0]]
             }
+        }
+        public bool Population_Check(Majority_System Majority)
+        {
+            double votelocation = majoritychoose(Majority, false), notparpop = 0;
+            var NotParticpating = from state in EuCountries
+                                  where state.Position.ToString() == "Notparticpating"
+                                  select state.Population;
+            var _for = from state in EuCountries
+                          where state.Position.ToString() == "Yes"
+                          select state;
+            var not = from state in EuCountries
+                          where state.Position.ToString() == "No"
+                          select state;
+            var Abstainer = from state in EuCountries
+                          where state.Position.ToString() == "Abstain"
+                          select state;
+            foreach (var notpop in NotParticpating)
+            {
+                notparpop += notpop;
+            }
+            double percentage_thing = (100 - notparpop);
+
+
+
+
+
         }
 
     }
