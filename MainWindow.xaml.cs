@@ -256,33 +256,15 @@ namespace European_Calculator
                 Mem_No.Content = $"No: {countries_yes}";
                 Mem_Yes.Content = $"Yes: {countries_no}";
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
-                IfPass();
                 Mem_Total.Content = $"Total: {total}";
-
-
-
-
-                var NotParticpating = from state in Initiate.EuCountries
-                                      where state.Position.ToString() == "Notparticpating"
-                                      select state.Population;
-                float notparpop= 0, totalPercentage = 0;
-                foreach (int notpop in NotParticpating)
-                {
-                    notparpop += notpop;
-                }
-                int PercentageParticpating = Convert.ToInt32(Initiate.PopulationTotal - notparpop);
-                var _for = from state in Initiate.EuCountries
-                           where state.Position.ToString() == "Yes"
-                           select state;
-                foreach (var ParticpatingCountry in _for)
-                {
-                    totalPercentage += ParticpatingCountry.Population / PercentageParticpating;
-                    break;
-                }
-                test.Content = (float)Initiate.EuCountries[0].Population/ PercentageParticpating;
-
                 count++;
+
+
+
+
+                test.Content = Initiate.majoritychoose(Initiate.vote_system,true);
             }
+            Population_Stat_Updater();
         }
 
         private void Vote_Rule(object sender, RoutedEventArgs e)
@@ -316,9 +298,9 @@ namespace European_Calculator
 
         }
 
-        public void IfPass()
+        private void IfPass(int Notparticipating, int countfor, double percfor)
         {
-            if (Initiate.Population_Check(Initiate.vote_system) && Initiate.Member_States_Check(Initiate.vote_system))
+            if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating, countfor))
             {
                 Pass_Marker.Content = "Approved";
             }
@@ -326,6 +308,42 @@ namespace European_Calculator
             {
                 Pass_Marker.Content = "Denied";
             }
+        }
+        private void Population_Stat_Updater()
+        {
+            
+            int countYe=0, countNo=0, countAbs=0, countNotParc= 0;
+            foreach (var State in Initiate.EuCountries)
+            {
+
+                switch (State.Position.ToString())
+                {
+                    case "Yes":
+                        countYe += State.Population;
+                        break;
+                    case "No":
+                        countNo += State.Population;
+                        break;
+                    case "Abstain":
+                        countAbs += State.Population;
+                        break;
+                    case "Notparticpating":
+                        countNotParc += State.Population;
+                        break;
+                    default:
+                        break;
+                }
+                //totalPercentage += Math.Round((double)(ParticpatingCountry / PercentageParticpating), 2);
+            }
+            double PercentageParticpating = Convert.ToInt32(Initiate.PopulationTotal- countNotParc);
+            double PercYes =  Math.Round((double)(100*(countYe / PercentageParticpating)), 2), 
+                PercNo = Math.Round((double)(100*(countNo / PercentageParticpating)),2), 
+                Percabs = Math.Round((double)(100*(countAbs / PercentageParticpating)),2);
+            IfPass(countNotParc, countYe,Math.Round((double)(countYe / PercentageParticpating), 2));
+            Pop_Yes.Content = $"Yes: {PercYes}";
+            Pop_No.Content = $"No: {PercNo}";
+            Pop_Abs.Content = $"Abstain: {Percabs}";
+
         }
 
     }

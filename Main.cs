@@ -18,7 +18,7 @@ namespace European_Calculator
             sim,
             unam,
         }
-        public Majority_System vote_system = Majority_System.qual;
+        public Majority_System vote_system;
         public int PopulationTotal = 0;
 
         
@@ -84,17 +84,15 @@ namespace European_Calculator
             EuCountries[loc].Position = CountryPosition.Abstain;
         }
 
-        public bool Member_States_Check(Majority_System Majority)
+        public bool Member_States_Check(Majority_System Majority, int NotParticpating,int _for )
         {
             double votelocation = majoritychoose(Majority, true);
-            var _for = from state in EuCountries
-                            where state.Position.ToString() == "Yes"
-                            select state;
-            var NotParticpating = from state in EuCountries
-                          where state.Position.ToString() == "Notparticpating"
-                          select state;
-            int Pass_Mark = Convert.ToInt32(Math.Ceiling((27 - NotParticpating.Count())* votelocation));
-            if (_for.Count()  >= Pass_Mark)
+            int Pass_Mark = Convert.ToInt32(Math.Ceiling((EuCountries.Count() - NotParticpating* votelocation)));
+            if (_for  >= Pass_Mark)
+            {
+                return true;
+            }
+            if (_for == EuCountries.Count()&& Majority.ToString() == "unam")
             {
                 return true;
             }
@@ -120,8 +118,7 @@ namespace European_Calculator
                     else
                     {
                         return 0.65;
-                    }
-                    break;
+                    }    
                 case "rein":
                     if (iscountry)
                     {
@@ -131,7 +128,7 @@ namespace European_Calculator
                     {
                         return 0.65;
                     }
-                    break;
+
                 case "sim":
                     if (iscountry)
                     {
@@ -141,7 +138,7 @@ namespace European_Calculator
                     {
                         return 0;
                     }
-                    break;
+
                 case "unam":
                     if (iscountry)
                     {
@@ -151,38 +148,20 @@ namespace European_Calculator
                     {
                         return 0;
                     }
-                    break;
+
                 default:
                     return 0;
-                    break;
                     //[[0.55,0.65],[0.72,0.65],[0.5,0],[1,0]]
             }
         }
-        public bool Population_Check(Majority_System Majority)
+        public bool Population_Check(Majority_System Majority,double  _for )
         {
-            double votelocation = majoritychoose(Majority, false), notparpop = 0, totalPercentage = 0;
-            var NotParticpating = from state in EuCountries
-                                  where state.Position.ToString() == "Notparticpating"
-                                  select state.Population;
-            var _for = from state in EuCountries
-                          where state.Position.ToString() == "Yes"
-                          select state;
-            var not = from state in EuCountries
-                          where state.Position.ToString() == "No"
-                          select state;
-            var Abstainer = from state in EuCountries
-                          where state.Position.ToString() == "Abstain"
-                          select state;
-            foreach (int notpop in NotParticpating)
+            double votelocation = majoritychoose(Majority, false);
+            if (_for >= votelocation)
             {
-                notparpop += notpop;
+                return true;
             }
-            double PercentageParticpating = Convert.ToInt32(PopulationTotal- notparpop);
-            foreach(var ParticpatingCountry in _for)
-            {
-                totalPercentage += Math.Round((double)(ParticpatingCountry.Population / PercentageParticpating),2);
-            }
-            if (totalPercentage >= votelocation)
+            if (Majority.ToString() == "unam")
             {
                 return true;
             }
