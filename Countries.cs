@@ -12,7 +12,7 @@ namespace European_Calculator
     struct Country
     {
         public string CountrieName;
-        public float Population;
+        public int Population;
         public CountryPosition Position;
     }
     //Enumerated List: CountryPosition
