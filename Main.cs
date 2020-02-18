@@ -177,7 +177,7 @@ namespace European_Calculator
             {
                 notparpop += notpop;
             }
-            int PercentageParticpating = Convert.ToInt32(PopulationTotal- notparpop);
+            double PercentageParticpating = Convert.ToInt32(PopulationTotal- notparpop);
             foreach(var ParticpatingCountry in _for)
             {
                 totalPercentage += Math.Round((double)(ParticpatingCountry.Population / PercentageParticpating),2);

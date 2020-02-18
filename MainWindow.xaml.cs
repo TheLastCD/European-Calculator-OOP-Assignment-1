@@ -265,7 +265,7 @@ namespace European_Calculator
                 var NotParticpating = from state in Initiate.EuCountries
                                       where state.Position.ToString() == "Notparticpating"
                                       select state.Population;
-                double notparpop= 0, totalPercentage = 0;
+                float notparpop= 0, totalPercentage = 0;
                 foreach (int notpop in NotParticpating)
                 {
                     notparpop += notpop;
@@ -276,9 +276,10 @@ namespace European_Calculator
                            select state;
                 foreach (var ParticpatingCountry in _for)
                 {
-                    totalPercentage += Math.Round((double)(ParticpatingCountry.Population / PercentageParticpating), 2);
+                    totalPercentage += ParticpatingCountry.Population / PercentageParticpating;
+                    break;
                 }
-                test.Content = ;
+                test.Content = (float)Initiate.EuCountries[0].Population/ PercentageParticpating;
 
                 count++;
             }
