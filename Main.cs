@@ -84,15 +84,15 @@ namespace European_Calculator
             EuCountries[loc].Position = CountryPosition.Abstain;
         }
 
-        public bool Member_States_Check(Majority_System Majority, int NotParticpating,int _for )
+        public bool Member_States_Check(Majority_System Majority, int NotParticipating,int _for )
         {
             double votelocation = majoritychoose(Majority, true);
-            int Pass_Mark = Convert.ToInt32(Math.Ceiling((EuCountries.Count() - NotParticpating* votelocation)));
+            int Pass_Mark = Convert.ToInt32(Math.Ceiling((double)((27 - NotParticipating)* votelocation)));
             if (_for  >= Pass_Mark)
             {
                 return true;
             }
-            if (_for == EuCountries.Count()&& Majority.ToString() == "unam")
+            if (_for == EuCountries.Count() - 1 && Majority.ToString() == "unam")
             {
                 return true;
             }

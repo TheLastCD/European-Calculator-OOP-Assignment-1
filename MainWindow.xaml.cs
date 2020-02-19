@@ -258,11 +258,6 @@ namespace European_Calculator
                 Mem_Abs.Content = $"Abstain: {countries_abs}";
                 Mem_Total.Content = $"Total: {total}";
                 count++;
-
-
-
-
-                test.Content = Initiate.majoritychoose(Initiate.vote_system,true);
             }
             Population_Stat_Updater();
         }
@@ -298,9 +293,15 @@ namespace European_Calculator
 
         }
 
-        private void IfPass(int Notparticipating, int countfor, double percfor)
+        private void IfPass(double percfor)
         {
-            if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating, countfor))
+            var countfor = from state in Initiate.EuCountries
+                       where state.Position.ToString() == "Yes"
+                       select state;
+            var Notparticipating = from state in Initiate.EuCountries
+                                  where state.Position.ToString() == "Notparticpating"
+                                  select state;
+            if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating.Count(), countfor.Count()-1))
             {
                 Pass_Marker.Content = "Approved";
             }
@@ -311,7 +312,6 @@ namespace European_Calculator
         }
         private void Population_Stat_Updater()
         {
-            
             int countYe=0, countNo=0, countAbs=0, countNotParc= 0;
             foreach (var State in Initiate.EuCountries)
             {
@@ -339,7 +339,7 @@ namespace European_Calculator
             double PercYes =  Math.Round((double)(100*(countYe / PercentageParticpating)), 2), 
                 PercNo = Math.Round((double)(100*(countNo / PercentageParticpating)),2), 
                 Percabs = Math.Round((double)(100*(countAbs / PercentageParticpating)),2);
-            IfPass(countNotParc, countYe,Math.Round((double)(countYe / PercentageParticpating), 2));
+            IfPass(Math.Round((double)(countYe / PercentageParticpating), 2));
             Pop_Yes.Content = $"Yes: {PercYes}";
             Pop_No.Content = $"No: {PercNo}";
             Pop_Abs.Content = $"Abstain: {Percabs}";
