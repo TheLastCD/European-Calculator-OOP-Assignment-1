@@ -301,6 +301,7 @@ namespace European_Calculator
             var Notparticipating = from state in Initiate.EuCountries
                                   where state.Position.ToString() == "Notparticpating"
                                   select state;
+            Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Initiate.EuCountries.Count() - 1) - Notparticipating.Count()) * Initiate.majoritychoose(Initiate.vote_system,true))))}";
             if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating.Count(), countfor.Count()-1))
             {
                 Pass_Marker.Content = "Approved";
@@ -340,9 +341,11 @@ namespace European_Calculator
                 PercNo = Math.Round((double)(100*(countNo / PercentageParticpating)),2), 
                 Percabs = Math.Round((double)(100*(countAbs / PercentageParticpating)),2);
             IfPass(Math.Round((double)(countYe / PercentageParticpating), 2));
-            Pop_Yes.Content = $"Yes: {PercYes}";
-            Pop_No.Content = $"No: {PercNo}";
-            Pop_Abs.Content = $"Abstain: {Percabs}";
+            Pop_Yes.Content = $"Yes: {PercYes}%";
+            Pop_No.Content = $"No: {PercNo}%";
+            Pop_Abs.Content = $"Abstain: {Percabs}%";
+            Pop_Pass.Content = $"Population to Pass: {Initiate.majoritychoose(Initiate.vote_system, false)*100}%";
+            
 
         }
 

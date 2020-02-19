@@ -87,7 +87,7 @@ namespace European_Calculator
         public bool Member_States_Check(Majority_System Majority, int NotParticipating,int _for )
         {
             double votelocation = majoritychoose(Majority, true);
-            int Pass_Mark = Convert.ToInt32(Math.Ceiling((double)((27 - NotParticipating)* votelocation)));
+            int Pass_Mark = Convert.ToInt32(Math.Ceiling((double)(((EuCountries.Count()-1) - NotParticipating)* votelocation)));
             if (_for  >= Pass_Mark)
             {
                 return true;

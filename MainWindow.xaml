@@ -236,11 +236,13 @@
         <Label Name="Mem_Abs" Content="Abstain: 0" HorizontalAlignment="Left" Height="25" Margin="545,169.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
 
         <Label Name ="test_2" Content="Population:" HorizontalAlignment="Left" Margin="495,196,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
-        <Label Name="Pop_Yes" Content="Yes: 100" HorizontalAlignment="Left" Height="25" Margin="568,221,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <Label Name="Pop_No" Content="No: 0" HorizontalAlignment="Left" Height="25" Margin="568,246,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <Label Name="Pop_Abs" Content="Abstain: 0" HorizontalAlignment="Left" Height="25" Margin="545,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Pop_Yes" Content="Yes: 100%" HorizontalAlignment="Left" Height="25" Margin="568,221,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Label Name="Pop_No" Content="No: 0%" HorizontalAlignment="Left" Height="25" Margin="568,246,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Label Name="Pop_Abs" Content="Abstain: 0%" HorizontalAlignment="Left" Height="25" Margin="545,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="Mem_Total" Content="Total: 27" HorizontalAlignment="Left" Height="25" Margin="568,98.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="55"/>
-        <Label Name ="Pass_Marker" Content="Pass" HorizontalAlignment="Left" Height="44" Margin="523,331.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176"/>
+        <Label Name ="Pass_Marker" Content="Approved" HorizontalAlignment="Center" Height="44" Margin="523,357.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176" FontSize="20" FontWeight="Bold"/>
+        <Label Name ="Mem_Pass" Content="Member States to Pass: 15" HorizontalAlignment="Left" Margin="474,295.667,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Name="Pop_Pass" Content="Population to Pass: 65%" HorizontalAlignment="Left" Margin="497,321.667,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
