@@ -230,12 +230,12 @@
             <ComboBoxItem Name="Unam">Unanamity</ComboBoxItem>
         </ComboBox>
         <Label Name ="voters" Content="Voting Rule:" HorizontalAlignment="Left" Margin="495,9.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
-        <Label Name="test" Content="Member Countries:" HorizontalAlignment="Left" Margin="495,65.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Member Countries:" HorizontalAlignment="Left" Margin="495,65.667,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
         <Label Name="Mem_Yes" Content="Yes: 27" HorizontalAlignment="Left" Height="25" Margin="568,122.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
         <Label Name="Mem_No"  Content="No: 0" HorizontalAlignment="Left" Height="25" Margin="568,144.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50"/>
         <Label Name="Mem_Abs" Content="Abstain: 0" HorizontalAlignment="Left" Height="25" Margin="545,169.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
 
-        <Label Name ="test_2" Content="Population:" HorizontalAlignment="Left" Margin="495,196,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Population:" HorizontalAlignment="Left" Margin="495,196,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
         <Label Name="Pop_Yes" Content="Yes: 100%" HorizontalAlignment="Left" Height="25" Margin="568,221,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Label Name="Pop_No" Content="No: 0%" HorizontalAlignment="Left" Height="25" Margin="568,246,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Label Name="Pop_Abs" Content="Abstain: 0%" HorizontalAlignment="Left" Height="25" Margin="545,266,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>

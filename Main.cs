@@ -11,6 +11,8 @@ namespace European_Calculator
     {
         //Creating the list that contains the countries and structures
         public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count() + 1];
+        
+        //establishes the enumerated list that is used to decide which voting majority is being
         public enum Majority_System
         {
             qual,
@@ -19,9 +21,27 @@ namespace European_Calculator
             unam,
         }
         public Majority_System vote_system;
-        public int PopulationTotal = 0;
-
         
+        //the total population of the countries being accounted for written so that it adds to its existing value when the value is set
+        private int _PopulationTotal = 0;
+        public int PopulationTotal
+        {
+            get { return _PopulationTotal; }
+            set
+            {
+                if (value >= 0)
+                {
+                    _PopulationTotal += value;
+                }
+                else
+                {
+                    _PopulationTotal = PopulationTotal;
+                }
+            }
+
+        }
+
+
         //Method Name: Create
         //Return: Void
         //Accepts: null
@@ -37,7 +57,7 @@ namespace European_Calculator
                 try
                 {
                     population = Convert.ToInt32(countryAndPerc[1]);
-                    PopulationTotal += population;
+                    PopulationTotal = population;
                 }
                 catch
                 {
@@ -84,6 +104,10 @@ namespace European_Calculator
             EuCountries[loc].Position = CountryPosition.Abstain;
         }
 
+        // Method Name: Member_States_Check
+        // Return: Bool
+        // Purpose: To check if the number of member states voting yes surpasses the amount required to pass
+        //          if so it returns True if not it returns False
         public bool Member_States_Check(Majority_System Majority, int NotParticipating,int _for )
         {
             double votelocation = Majority_Choose(Majority, true);
@@ -106,6 +130,11 @@ namespace European_Calculator
 
 
         }
+
+        // Method Name: Majority_Choose
+        // Return: double
+        // Purpose: To inform the Member_States_Check and the Population_Check method
+        //          What percentage is required for them to pass
         public double Majority_Choose(Majority_System Majority, bool iscountry)
         {
             switch (Majority.ToString())
@@ -154,6 +183,11 @@ namespace European_Calculator
                     //[[0.55,0.65],[0.72,0.65],[0.5,0],[1,0]]
             }
         }
+        
+        // Method Name: Population_Check
+        // Return: Bool
+        // Purpose: If the population surpasses the amount needed for the bill to pass
+        //          the method returns true if not it returns false.
         public bool Population_Check(Majority_System Majority,double  _for )
         {
             double votelocation = Majority_Choose(Majority, false);

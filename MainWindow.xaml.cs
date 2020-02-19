@@ -26,7 +26,7 @@ namespace European_Calculator
         //greatly decrease the number of methods required from around 81 to 10
         // while maintaining a BigO of O(n)
         Main Initiate = new Main();
-        public CheckBox[] EUParticipants()
+        private CheckBox[] EUParticipants()
         {
             CheckBox[] particpants = new CheckBox[]
             {
@@ -37,7 +37,7 @@ namespace European_Calculator
             };
             return particpants;
         }
-        public CheckBox[] EUAbstain()
+        private CheckBox[] EUAbstain()
         {
             CheckBox[] Abstain = new CheckBox[]
             {
@@ -48,7 +48,7 @@ namespace European_Calculator
             };
             return Abstain;
         }
-        public CheckBox[] EUVote()
+        private CheckBox[] EUVote()
         {
             CheckBox[] Vote = new CheckBox[]
             {
@@ -59,7 +59,7 @@ namespace European_Calculator
             };
             return Vote;
         }
-        public CheckBox[] NotEuro()
+        private CheckBox[] NotEuro()
         {
             CheckBox[] NonEuro = new CheckBox[]
             {
@@ -205,6 +205,9 @@ namespace European_Calculator
             }
         }
 
+        // Method Name: Force_Part
+        // Return: Void
+        // Purpose: To force all countries to particpate
         private void Force_Part(object sender, RoutedEventArgs e)
         {
             foreach(CheckBox country in EUParticipants())
@@ -212,6 +215,7 @@ namespace European_Calculator
                 if (country.IsChecked == false)
                 {
                     country.IsChecked = true;
+
                 }
             }
         }
@@ -276,6 +280,10 @@ namespace European_Calculator
             Population_Stat_Updater();
         }
 
+        // Method Name: Vote_Rule
+        // Return: void
+        // Purpose: This method takes note of what is selected in the voting rule drop down menu and updates an
+        //          enumerated list to match the current selection 
         private void Vote_Rule(object sender, RoutedEventArgs e)
         {
             string VoteState = Voting_Rules.SelectedValue.ToString().ToLower();
@@ -307,6 +315,10 @@ namespace European_Calculator
 
         }
 
+        // Method Name: If_Pass
+        // Return: void
+        // Purpose: This method acts as an AND gate if the population and number of member states is high enough
+        //          it modifies the text to say if the bill has passed or not
         private void If_Pass(double percfor)
         {
             var countfor = from state in Initiate.EuCountries
@@ -325,6 +337,11 @@ namespace European_Calculator
                 Pass_Marker.Content = "Denied";
             }
         }
+
+        // Method Name: Population_Stat_Updater
+        // Return: void
+        // Purpose: To collect all of the population data and not only output to the UI the population figures rounded to 2DP
+        //          It also triggers the If_Pass method to decide if the bill passes.
         private void Population_Stat_Updater()
         {
             int countYe=0, countNo=0, countAbs=0, countNotParc= 0;
