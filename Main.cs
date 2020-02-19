@@ -10,7 +10,7 @@ namespace European_Calculator
     class Main
     {
         //Creating the list that contains the countries and structures
-        public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count()+1];
+        public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count() + 1];
         public enum Majority_System
         {
             qual,
@@ -86,7 +86,7 @@ namespace European_Calculator
 
         public bool Member_States_Check(Majority_System Majority, int NotParticipating,int _for )
         {
-            double votelocation = majoritychoose(Majority, true);
+            double votelocation = Majority_Choose(Majority, true);
             int Pass_Mark = Convert.ToInt32(Math.Ceiling((double)(((EuCountries.Count()-1) - NotParticipating)* votelocation)));
             if (_for  >= Pass_Mark)
             {
@@ -106,7 +106,7 @@ namespace European_Calculator
 
 
         }
-        public double majoritychoose(Majority_System Majority, bool iscountry)
+        public double Majority_Choose(Majority_System Majority, bool iscountry)
         {
             switch (Majority.ToString())
             {
@@ -156,7 +156,7 @@ namespace European_Calculator
         }
         public bool Population_Check(Majority_System Majority,double  _for )
         {
-            double votelocation = majoritychoose(Majority, false);
+            double votelocation = Majority_Choose(Majority, false);
             if (_for >= votelocation)
             {
                 return true;

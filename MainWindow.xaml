@@ -222,7 +222,7 @@
 
             </Grid>
         </ScrollViewer>
-        <CheckBox Name="Euro_Control" Content="Only Eurozone" HorizontalAlignment="Left" Margin="446,15,0,0" VerticalAlignment="Top" Click="limit_Euro"/>
+        <CheckBox Name="Euro_Control" Content="Only Eurozone" HorizontalAlignment="Left" Margin="518,15,0,0" VerticalAlignment="Top" Click="limit_Euro"/>
         <ComboBox Name ="Voting_Rules" SelectionChanged="Vote_Rule" Margin="568,11.667,53,408" Grid.Row="1" Height="25" Width="180">
             <ComboBoxItem Name="qualifiedmajority"  IsSelected="True">Qualified Majority</ComboBoxItem>
             <ComboBoxItem Name="reinforcedqualifiedmajority">Reinforced Qualified Majority</ComboBoxItem>
@@ -243,6 +243,7 @@
         <Label Name ="Pass_Marker" Content="Approved" HorizontalAlignment="Center" Height="44" Margin="523,357.667,0,0" Grid.Row="1" VerticalAlignment="Top" Width="176" FontSize="20" FontWeight="Bold"/>
         <Label Name ="Mem_Pass" Content="Member States to Pass: 15" HorizontalAlignment="Left" Margin="474,295.667,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Name="Pop_Pass" Content="Population to Pass: 65%" HorizontalAlignment="Left" Margin="497,321.667,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <CheckBox Name ="All_Part" Content="All Countries Particpating" HorizontalAlignment="Left" Margin="350,15,0,0" VerticalAlignment="Top" Click="Force_Part"/>
 
     </Grid>
 </Window>

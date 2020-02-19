@@ -117,6 +117,7 @@ namespace European_Calculator
                     {
                         EUAbstain()[count].IsChecked = false;
                         EUVote()[count].IsChecked = join;
+                        All_Part.IsChecked = false;
                     }
                     RemoveEurotag(country);
                     Update_numbers();
@@ -204,6 +205,18 @@ namespace European_Calculator
             }
         }
 
+        private void Force_Part(object sender, RoutedEventArgs e)
+        {
+            foreach(CheckBox country in EUParticipants())
+            {
+                if (country.IsChecked == false)
+                {
+                    country.IsChecked = true;
+                }
+            }
+        }
+
+
         // Method Name: RemoveEurotag
         // Return: Void
         // Purpose: Will uncheck the eurozone check box if one of the non euro zone section is checked while the filter is on
@@ -216,6 +229,7 @@ namespace European_Calculator
                 Update_numbers();
             }
         }
+        
 
         // Method  Name: Update_numbers
         // Return: void
@@ -293,7 +307,7 @@ namespace European_Calculator
 
         }
 
-        private void IfPass(double percfor)
+        private void If_Pass(double percfor)
         {
             var countfor = from state in Initiate.EuCountries
                        where state.Position.ToString() == "Yes"
@@ -301,7 +315,7 @@ namespace European_Calculator
             var Notparticipating = from state in Initiate.EuCountries
                                   where state.Position.ToString() == "Notparticpating"
                                   select state;
-            Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Initiate.EuCountries.Count() - 1) - Notparticipating.Count()) * Initiate.majoritychoose(Initiate.vote_system,true))))}";
+            Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Initiate.EuCountries.Count() - 1) - Notparticipating.Count()) * Initiate.Majority_Choose(Initiate.vote_system,true))))}";
             if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating.Count(), countfor.Count()-1))
             {
                 Pass_Marker.Content = "Approved";
@@ -340,11 +354,11 @@ namespace European_Calculator
             double PercYes =  Math.Round((double)(100*(countYe / PercentageParticpating)), 2), 
                 PercNo = Math.Round((double)(100*(countNo / PercentageParticpating)),2), 
                 Percabs = Math.Round((double)(100*(countAbs / PercentageParticpating)),2);
-            IfPass(Math.Round((double)(countYe / PercentageParticpating), 2));
+            If_Pass(Math.Round((double)(countYe / PercentageParticpating), 2));
             Pop_Yes.Content = $"Yes: {PercYes}%";
             Pop_No.Content = $"No: {PercNo}%";
             Pop_Abs.Content = $"Abstain: {Percabs}%";
-            Pop_Pass.Content = $"Population to Pass: {Initiate.majoritychoose(Initiate.vote_system, false)*100}%";
+            Pop_Pass.Content = $"Population to Pass: {Initiate.Majority_Choose(Initiate.vote_system, false)*100}%";
             
 
         }
