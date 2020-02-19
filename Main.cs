@@ -116,14 +116,8 @@ namespace European_Calculator
             {
                 return true;
             }
-            if (_for == EuCountries.Count() - 1 && Majority.ToString() == "unam")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (_for == EuCountries.Count() - 1 && Majority.ToString() == "unam") return true;
+            else return false;
 
 
 
@@ -191,18 +185,12 @@ namespace European_Calculator
         public bool Population_Check(Majority_System Majority,double  _for )
         {
             double votelocation = Majority_Choose(Majority, false);
-            if (_for >= votelocation)
-            {
-                return true;
-            }
-            if (Majority.ToString() == "unam")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (_for >= votelocation) return true;
+
+            if (Majority.ToString() == "unam") return true;
+
+            else return false;
+
 
         }
 

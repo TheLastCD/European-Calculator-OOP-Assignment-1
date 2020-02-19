@@ -329,13 +329,9 @@ namespace European_Calculator
                                   select state;
             Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Initiate.EuCountries.Count() - 1) - Notparticipating.Count()) * Initiate.Majority_Choose(Initiate.vote_system,true))))}";
             if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating.Count(), countfor.Count()-1))
-            {
                 Pass_Marker.Content = "Approved";
-            }
             else
-            {
                 Pass_Marker.Content = "Denied";
-            }
         }
 
         // Method Name: Population_Stat_Updater
