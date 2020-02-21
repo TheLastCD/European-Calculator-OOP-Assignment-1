@@ -25,7 +25,7 @@ namespace European_Calculator
         //These lists are used to find which checkbox was checked allowing me to
         //greatly decrease the number of methods required from around 81 to 10
         // while maintaining a BigO of O(n)
-        Main Initiate = new Main();
+        Votelogger Initiate = new Votelogger();
         private CheckBox[] EUParticipants()
         {
             CheckBox[] particpants = new CheckBox[]
@@ -72,9 +72,8 @@ namespace European_Calculator
         //Initialize the main window for the UI
         public MainWindow()
         {
-            
-            Initiate.Create();
             InitializeComponent();
+            Initiate.Create();
         }
         
 
@@ -292,16 +291,16 @@ namespace European_Calculator
                 switch (VoteState.Remove(0, 38))
                 {
                     case "qualified majority":
-                        Initiate.vote_system = Main.Majority_System.qual;
+                        Initiate.vote_system = Votelogger.Majority_System.qual;
                         break;
                     case "reinforced qualified majority":
-                        Initiate.vote_system = Main.Majority_System.rein;
+                        Initiate.vote_system = Votelogger.Majority_System.rein;
                         break;
                     case "simple majority":
-                        Initiate.vote_system = Main.Majority_System.sim;
+                        Initiate.vote_system = Votelogger.Majority_System.sim;
                         break;
                     case "unanamity":
-                        Initiate.vote_system = Main.Majority_System.unam;
+                        Initiate.vote_system = Votelogger.Majority_System.unam;
                         break;
                     default:
                         break;

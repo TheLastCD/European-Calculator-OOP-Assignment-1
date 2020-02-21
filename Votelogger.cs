@@ -7,7 +7,7 @@ using System.IO;
 
 namespace European_Calculator
 {
-    class Main
+    class Votelogger
     {
         //Creating the list that contains the countries and structures
         public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count() + 1];
@@ -68,8 +68,9 @@ namespace European_Calculator
                 EuCountries[count].Position = CountryPosition.Yes;
                 count++;
             }
-
         }
+        
+
 
         //Method Name: VoteChange
         //Accepts: Integer loc, Boolean pos
@@ -79,10 +80,7 @@ namespace European_Calculator
         public void VoteChange(int loc, bool pos)
         {
             CountryPosition VoteChoice = CountryPosition.No;
-            if (pos)
-            {
-                VoteChoice = CountryPosition.Yes;
-            }
+            if (pos) VoteChoice = CountryPosition.Yes;
             EuCountries[loc].Position = VoteChoice;
         }
         
@@ -104,6 +102,8 @@ namespace European_Calculator
             EuCountries[loc].Position = CountryPosition.Abstain;
         }
 
+
+
         // Method Name: Member_States_Check
         // Return: Bool
         // Purpose: To check if the number of member states voting yes surpasses the amount required to pass
@@ -113,71 +113,13 @@ namespace European_Calculator
             double votelocation = Majority_Choose(Majority, true);
             int Pass_Mark = Convert.ToInt32(Math.Ceiling((double)(((EuCountries.Count()-1) - NotParticipating)* votelocation)));
             if (_for  >= Pass_Mark)
-            {
                 return true;
-            }
+
             if (_for == EuCountries.Count() - 1 && Majority.ToString() == "unam") return true;
             else return false;
-
-
-
-
-
         }
 
-        // Method Name: Majority_Choose
-        // Return: double
-        // Purpose: To inform the Member_States_Check and the Population_Check method
-        //          What percentage is required for them to pass
-        public double Majority_Choose(Majority_System Majority, bool iscountry)
-        {
-            switch (Majority.ToString())
-            {
-                case "qual":
-                    if (iscountry)
-                    {
-                        return 0.55;
-                    }
-                    else
-                    {
-                        return 0.65;
-                    }    
-                case "rein":
-                    if (iscountry)
-                    {
-                        return 0.72;
-                    }
-                    else
-                    {
-                        return 0.65;
-                    }
-
-                case "sim":
-                    if (iscountry)
-                    {
-                        return 0.5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-
-                case "unam":
-                    if (iscountry)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-
-                default:
-                    return 0;
-                    //[[0.55,0.65],[0.72,0.65],[0.5,0],[1,0]]
-            }
-        }
-        
+      
         // Method Name: Population_Check
         // Return: Bool
         // Purpose: If the population surpasses the amount needed for the bill to pass
@@ -193,6 +135,35 @@ namespace European_Calculator
 
 
         }
+
+        // Method Name: Majority_Choose
+        // Return: double
+        // Purpose: To inform the Member_States_Check and the Population_Check method
+        //          What percentage is required for them to pass
+        public double Majority_Choose(Majority_System Majority, bool iscountry)
+        {
+            switch (Majority.ToString())
+            {
+                case "qual":
+                    if (iscountry) return 0.55;
+                    else return 0.65;
+                case "rein":
+                    if (iscountry) return 0.72;
+                    else return 0.65;
+
+                case "sim":
+                    if (iscountry) return 0.5;
+                    else return 0;
+
+                case "unam":
+                    if (iscountry) return 1;
+                    else return 0;
+
+                default:
+                    return 0;
+            }
+        }
+
 
 
     }
