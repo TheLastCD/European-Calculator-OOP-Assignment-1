@@ -70,12 +70,25 @@ namespace European_Calculator
             };
             return NonEuro;
         }
-        
+
+        private Label[] LabelNames()
+        {
+            Label[] particpants = new Label[]
+            {
+                 Aus, Bel, Bul, Cro, Cyp, Cze, Den,
+                 Est,Fin,Fra,Ger,Gre, Hun, Ire, Ita,
+                 Lat, Lit, Lux, Mal, Net, Pol, Por, Rom,
+                 Slo,Slov,Spa,Swe
+            };
+            return particpants;
+        }
+
         //Initialize the main window for the UI
         public MainWindow()
         {
             InitializeComponent();
             Vote_Logger.Create();
+            Population_Stat_Updater();
         }
         
 
@@ -114,10 +127,11 @@ namespace European_Calculator
                 }
                 try
                 {
-                    if (!join)
+                    if (country.IsChecked == false)
                     {
                         EUAbstain()[count].IsChecked = false;
                         EUVote()[count].IsChecked = join;
+                        LabelNames()[count].Content = $"{Vote_Logger.EuCountries[count].CountrieName}, Not Particpating";
                         All_Part.IsChecked = false;
                     }
                     else EUVote()[count].IsChecked = true;
@@ -378,8 +392,29 @@ namespace European_Calculator
             Pop_No.Content = $"No: {PercNo}%";
             Pop_Abs.Content = $"Abstain: {Percabs}%";
             Pop_Pass.Content = $"Population to Pass: {Vote_Logger.Majority_Choose(Vote_Logger.vote_system, false)*100}%";
+            Redistribute(PercentageParticpating);
+
             
 
+        }
+        private void Redistribute(double PopulationPaticipating)
+        {
+            int count = 0;
+            foreach(Label State in LabelNames())
+            {
+                if(EUParticipants()[count].IsChecked == true)
+                {
+                    if(State == Cze)
+                    {
+                        State.Content = $"Czech Republic, {Math.Round((double)(100 * (Vote_Logger.EuCountries[count].Population / PopulationPaticipating)), 2)}%";
+                    }
+                    else
+                    State.Content = $"{Vote_Logger.EuCountries[count].CountrieName}, {Math.Round((double)(100 * (Vote_Logger.EuCountries[count].Population / PopulationPaticipating)), 2)}%";
+                    
+                }
+                count++;
+                
+            }
         }
 
     }

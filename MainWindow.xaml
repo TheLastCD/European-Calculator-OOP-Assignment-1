@@ -60,163 +60,163 @@
                 <Label Content="Abstain" Grid.Row="0" Grid.Column="3" FontSize="10"/>
                 <!--//country data Austria-->
                 <CheckBox Name ="AusPart"  Grid.Column="0" Grid.Row="1" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Austria" Grid.Row="1" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Aus" Content="Austria" Grid.Row="1" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="AusVote" Grid.Column="2" Grid.Row="1" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="AusAb" Grid.Column="3" Grid.Row="1" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining"/>
 
                 <!--//country data Belgium-->
                 <CheckBox Name ="BelgPart" Grid.Column="0" Grid.Row="2" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Belgium" Grid.Row="2" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Bel" Content="Belgium" Grid.Row="2" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="BelgVote" Grid.Column="2" Grid.Row="2" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="BelgAb" Grid.Column="3" Grid.Row="2" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Bulgaria-->
                 <CheckBox Name ="BulPart" Grid.Column="0" Grid.Row="3" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Bulgaria" Grid.Row="3" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Bul" Content="Bulgaria" Grid.Row="3" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="BulVote" Grid.Column="2" Grid.Row="3" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="BulAb" Grid.Column="3" Grid.Row="3" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Croatia-->
                 <CheckBox Name ="CroPart" Grid.Column="0" Grid.Row="4" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Croatia" Grid.Row="4" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Cro" Content="Croatia" Grid.Row="4" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="CroVote" Grid.Column="2" Grid.Row="4" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="CroAb" Grid.Column="3" Grid.Row="4" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Cyprus-->
                 <CheckBox Name ="CypPart" Grid.Column="0" Grid.Row="5" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Cyprus" Grid.Row="5" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Cyp" Content="Cyprus" Grid.Row="5" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="CypVote" Grid.Column="2" Grid.Row="5" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="CypAb" Grid.Column="3" Grid.Row="5" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Czech Republic-->
                 <CheckBox Name ="CzePart" Grid.Column="0" Grid.Row="6" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Czech Republic" Grid.Row="6" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Cze" Content="Czech Republic" Grid.Row="6" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="CzeVote" Grid.Column="2" Grid.Row="6" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="CzeAb" Grid.Column="3" Grid.Row="6" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Denmark-->
                 <CheckBox Name ="DenPart" Grid.Column="0" Grid.Row="7" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Denmark" Grid.Row="7" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Den" Content="Denmark" Grid.Row="7" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="DenVote" Grid.Column="2" Grid.Row="7" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="DenAb" Grid.Column="3" Grid.Row="7" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Estonia-->
                 <CheckBox Name ="EstPart" Grid.Column="0" Grid.Row="8" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Estonia" Grid.Row="8" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Est" Content="Estonia" Grid.Row="8" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="EstVote" Grid.Column="2" Grid.Row="8" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="EstAb" Grid.Column="3" Grid.Row="8" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Finland-->
                 <CheckBox Name ="FinPart" Grid.Column="0" Grid.Row="9" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Finland" Grid.Row="9" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Fin" Content="Finland" Grid.Row="9" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="FinVote" Grid.Column="2" Grid.Row="9" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="FinAb" Grid.Column="3" Grid.Row="9" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data France-->
                 <CheckBox Name ="FraPart" Grid.Column="0" Grid.Row="10" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="France" Grid.Row="10" Grid.Column="1" FontSize="10"/>
+                <Label  Name ="Fra" Content="France" Grid.Row="10" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="FraVote" Grid.Column="2" Grid.Row="10" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="FraAb" Grid.Column="3" Grid.Row="10" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Germany-->
                 <CheckBox Name ="GerPart" Grid.Column="0" Grid.Row="11" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Germany" Grid.Row="11" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Ger" Content="Germany" Grid.Row="11" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="GerVote" Grid.Column="2" Grid.Row="11" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="GerAb" Grid.Column="3" Grid.Row="11" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Greece-->
                 <CheckBox Name ="GrePart" Grid.Column="0" Grid.Row="12" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Greece" Grid.Row="12" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Gre" Content="Greece" Grid.Row="12" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="GreVote" Grid.Column="2" Grid.Row="12" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="GreAb" Grid.Column="3" Grid.Row="12" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Hungary-->
                 <CheckBox Name ="HunPart" Grid.Column="0" Grid.Row="13" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Hungary" Grid.Row="13" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Hun" Content="Hungary" Grid.Row="13" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="HunVote" Grid.Column="2" Grid.Row="13" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="HunAb" Grid.Column="3" Grid.Row="13" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Ireland-->
                 <CheckBox Name ="IrePart" Grid.Column="0" Grid.Row="14" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Ireland" Grid.Row="14" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Ire" Content="Ireland" Grid.Row="14" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="IreVote" Grid.Column="2" Grid.Row="14" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="IreAb" Grid.Column="3" Grid.Row="14" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Italy-->
                 <CheckBox Name ="ItaPart" Grid.Column="0" Grid.Row="15" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Italy" Grid.Row="15" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Ita" Content="Italy" Grid.Row="15" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="ItaVote" Grid.Column="2" Grid.Row="15" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="ItaAb" Grid.Column="3" Grid.Row="15" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Latvia-->
                 <CheckBox Name ="LatPart" Grid.Column="0" Grid.Row="16" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Latvia" Grid.Row="16" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Lat" Content="Latvia" Grid.Row="16" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="LatVote" Grid.Column="2" Grid.Row="16" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="LatAb" Grid.Column="3" Grid.Row="16" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Lithuania-->
                 <CheckBox Name ="LitPart" Grid.Column="0" Grid.Row="17" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Lithuania" Grid.Row="17" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Lit" Content="Lithuania" Grid.Row="17" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="LitVote" Grid.Column="2" Grid.Row="17" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="LitAb" Grid.Column="3" Grid.Row="17" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Luxembourg-->
                 <CheckBox Name ="LuxPart" Grid.Column="0" Grid.Row="18" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Luxembourg" Grid.Row="18" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Lux" Content="Luxembourg" Grid.Row="18" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="LuxVote" Grid.Column="2" Grid.Row="18" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="LuxAb" Grid.Column="3" Grid.Row="18" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Malta-->
                 <CheckBox Name ="MalPart" Grid.Column="0" Grid.Row="19" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Malta" Grid.Row="19" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Mal" Content="Malta" Grid.Row="19" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="MalVote" Grid.Column="2" Grid.Row="19" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="MalAb" Grid.Column="3" Grid.Row="19" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Netherlands-->
                 <CheckBox Name ="NetPart" Grid.Column="0" Grid.Row="20" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Netherlands" Grid.Row="20" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Net" Content="Netherlands" Grid.Row="20" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="NetVote" Grid.Column="2" Grid.Row="20" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="NetAb" Grid.Column="3" Grid.Row="20" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Poland-->
                 <CheckBox Name ="PolPart" Grid.Column="0" Grid.Row="21" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Poland" Grid.Row="21" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Pol" Content="Poland" Grid.Row="21" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="PolVote" Grid.Column="2" Grid.Row="21" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="PolAb" Grid.Column="3" Grid.Row="21" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Portugal-->
                 <CheckBox Name ="PorPart" Grid.Column="0" Grid.Row="22" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Portugal" Grid.Row="22" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Por" Content="Portugal" Grid.Row="22" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="PorVote" Grid.Column="2" Grid.Row="22" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="PorAb" Grid.Column="3" Grid.Row="22" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Romania-->
                 <CheckBox Name ="RomPart" Grid.Column="0" Grid.Row="23" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Romania" Grid.Row="23" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Rom" Content="Romania" Grid.Row="23" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="RomVote" Grid.Column="2" Grid.Row="23" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="RomAb" Grid.Column="3" Grid.Row="23" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Slovakia-->
                 <CheckBox Name ="SloPart" Grid.Column="0" Grid.Row="24" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Slovakia" Grid.Row="24" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Slo" Content="Slovakia" Grid.Row="24" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="SloVote" Grid.Column="2" Grid.Row="24" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="SloAb" Grid.Column="3" Grid.Row="24" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Slovenia-->
                 <CheckBox Name ="SlovPart" Grid.Column="0" Grid.Row="25" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Slovenia" Grid.Row="25" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Slov" Content="Slovenia" Grid.Row="25" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="SlovVote" Grid.Column="2" Grid.Row="25" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="SlovAb" Grid.Column="3" Grid.Row="25" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Spain-->
                 <CheckBox Name ="SpaPart" Grid.Column="0" Grid.Row="26" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Spain" Grid.Row="26" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Spa" Content="Spain" Grid.Row="26" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="SpaVote" Grid.Column="2" Grid.Row="26" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="SpaAb" Grid.Column="3" Grid.Row="26" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
                 <!--//country data Sweden-->
                 <CheckBox Name ="SwePart" Grid.Column="0" Grid.Row="27" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Participaction" />
-                <Label Content="Sweden" Grid.Row="27" Grid.Column="1" FontSize="10"/>
+                <Label Name ="Swe" Content="Sweden" Grid.Row="27" Grid.Column="1" FontSize="10"/>
                 <CheckBox Name ="SweVote" Grid.Column="2" Grid.Row="27" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Voting"/>
                 <CheckBox Name ="SweAb" Grid.Column="3" Grid.Row="27" IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Abstaining" />
 
