@@ -125,25 +125,17 @@ namespace European_Calculator
                 {
                     join = false;
                 }
-                try
+                if (country.IsChecked == false)
                 {
-                    if (country.IsChecked == false)
-                    {
-                        EUAbstain()[count].IsChecked = false;
-                        EUVote()[count].IsChecked = join;
-                        LabelNames()[count].Content = $"{Vote_Logger.EuCountries[count].CountrieName}, Not Particpating";
-                        All_Part.IsChecked = false;
-                    }
-                    else EUVote()[count].IsChecked = true;
-                    RemoveEurotag(country);
-                    Update_numbers();
-                    count++;
+                    EUAbstain()[count].IsChecked = false;
+                    EUVote()[count].IsChecked = join;
+                    LabelNames()[count].Content = $"{Vote_Logger.EuCountries[count].CountrieName}, Not Particpating";
+                    All_Part.IsChecked = false;
                 }
-                catch
-                {
-                    break;
-                }
-                
+                else EUVote()[count].IsChecked = true;
+                RemoveEurotag(country);
+                Update_numbers();
+                count++;
             }
             
         }
@@ -158,32 +150,23 @@ namespace European_Calculator
             foreach (CheckBox country in EUAbstain())
             {
                 bool abs = false;
-                if (country.IsChecked == true )
+                if (country.IsChecked == true)
                 {
                     abs = true;
-                }
-                try
-                { 
-                    
-                    
-                    if(EUParticipants()[count].IsChecked == !abs )
-                    {
-                        EUParticipants()[count].IsChecked = true;
-                        RemoveEurotag(EUParticipants()[count]);
-                    }
-                    if(EUVote()[count].IsChecked == true)
-                    {
-                        EUVote()[count].IsChecked = !abs;
-                        RemoveEurotag(EUParticipants()[count]);
-                    }
-                    Update_numbers();
-                    count++;
-                }
-                catch
+                }   
+                if(EUParticipants()[count].IsChecked == !abs )
                 {
-                    break;
+                    EUParticipants()[count].IsChecked = true;
+                    RemoveEurotag(EUParticipants()[count]);
                 }
-            }
+               if(EUVote()[count].IsChecked == true)
+                {
+                    EUVote()[count].IsChecked = !abs;
+                    RemoveEurotag(EUParticipants()[count]);
+                }
+                Update_numbers();
+                count++;
+                }
         }
 
         // Method Name: Voting
@@ -200,24 +183,17 @@ namespace European_Calculator
                 {
                     vot = true;
                 }
-                try
+                if (EUParticipants()[count].IsChecked == !vot)
                 {
-                    if (EUParticipants()[count].IsChecked == !vot)
-                    {
-                        EUParticipants()[count].IsChecked = true;
-                        RemoveEurotag(EUParticipants()[count]);
-                    }
-                    if(EUAbstain()[count].IsChecked == vot)
-                    {
-                        EUAbstain()[count].IsChecked = false;
-                    }
-                    Update_numbers();
-                    count++;
+                    EUParticipants()[count].IsChecked = true;
+                    RemoveEurotag(EUParticipants()[count]);
                 }
-                catch
+                if (EUAbstain()[count].IsChecked == vot)
                 {
-                    break;
+                    EUAbstain()[count].IsChecked = false;
                 }
+                Update_numbers();
+                count++;
             }
         }
 

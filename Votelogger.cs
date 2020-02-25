@@ -10,7 +10,7 @@ namespace European_Calculator
     class Votelogger
     {
         //Instantiates the Country Structure into a list that is one longer than the total number of countries
-        public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count() + 1];
+        public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count()];
         
         //establishes the enumerated list that is used to decide which voting majority is being
         public enum Majority_System
