@@ -9,7 +9,7 @@ namespace European_Calculator
 {
     class Votelogger
     {
-        //Creating the list that contains the countries and structures
+        //Instantiates the Country Structure into a list that is one longer than the total number of countries
         public Country[] EuCountries = new Country[File.ReadLines(@"ListOfCountries").Count() + 1];
         
         //establishes the enumerated list that is used to decide which voting majority is being
@@ -124,7 +124,7 @@ namespace European_Calculator
         // Return: Bool
         // Purpose: If the population surpasses the amount needed for the bill to pass
         //          the method returns true if not it returns false.
-        public bool Population_Check(Majority_System Majority,double  _for )
+        internal bool Population_Check(Majority_System Majority,double  _for )
         {
             double votelocation = Majority_Choose(Majority, false);
             if (_for >= votelocation) return true;

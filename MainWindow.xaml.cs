@@ -21,11 +21,13 @@ namespace European_Calculator
     public partial class MainWindow : Window
     {
 
+        // Instantiation of the Votelogger class,
+        // this allows us to link the UI to the backend code
+        Votelogger Vote_Logger = new Votelogger();
+
         //Methods containing lists for all the different clickboxes
         //These lists are used to find which checkbox was checked allowing me to
         //greatly decrease the number of methods required from around 81 to 10
-        // while maintaining a BigO of O(n)
-        Votelogger Initiate = new Votelogger();
         private CheckBox[] EUParticipants()
         {
             CheckBox[] particpants = new CheckBox[]
@@ -73,7 +75,7 @@ namespace European_Calculator
         public MainWindow()
         {
             InitializeComponent();
-            Initiate.Create();
+            Vote_Logger.Create();
         }
         
 
@@ -112,12 +114,13 @@ namespace European_Calculator
                 }
                 try
                 {
-                    if(country.IsChecked== false )
+                    if (!join)
                     {
                         EUAbstain()[count].IsChecked = false;
                         EUVote()[count].IsChecked = join;
                         All_Part.IsChecked = false;
                     }
+                    else EUVote()[count].IsChecked = true;
                     RemoveEurotag(country);
                     Update_numbers();
                     count++;
@@ -209,11 +212,15 @@ namespace European_Calculator
         // Purpose: To force all countries to particpate
         private void Force_Part(object sender, RoutedEventArgs e)
         {
+            int count = 0;
             foreach(CheckBox country in EUParticipants())
             {
+                
                 if (country.IsChecked == false)
                 {
                     country.IsChecked = true;
+                    EUVote()[count].IsChecked = true;
+                    count++;
 
                 }
             }
@@ -248,25 +255,25 @@ namespace European_Calculator
                 {
                     countries_no += 1;
                     countries_yes -= 1;
-                    Initiate.VoteChange(count,true);
+                    Vote_Logger.VoteChange(count,true);
 
                 }
                 if(country.IsChecked == false)
                 {
                     countries_yes -= 1;
                     total -= 1;
-                    Initiate.PartispantChange(count);
+                    Vote_Logger.PartispantChange(count);
                 }
                 if (country.IsChecked == true && EUVote()[count].IsChecked == false)
                 {
-                    Initiate.VoteChange(count, false);
+                    Vote_Logger.VoteChange(count, false);
 
                 }
                 if (country.IsChecked == true && EUAbstain()[count].IsChecked == true)
                 {
                     countries_abs += 1;
                     countries_yes -= 1;
-                    Initiate.AbstainChange(count);
+                    Vote_Logger.AbstainChange(count);
 
                 }
 
@@ -291,16 +298,16 @@ namespace European_Calculator
                 switch (VoteState.Remove(0, 38))
                 {
                     case "qualified majority":
-                        Initiate.vote_system = Votelogger.Majority_System.qual;
+                        Vote_Logger.vote_system = Votelogger.Majority_System.qual;
                         break;
                     case "reinforced qualified majority":
-                        Initiate.vote_system = Votelogger.Majority_System.rein;
+                        Vote_Logger.vote_system = Votelogger.Majority_System.rein;
                         break;
                     case "simple majority":
-                        Initiate.vote_system = Votelogger.Majority_System.sim;
+                        Vote_Logger.vote_system = Votelogger.Majority_System.sim;
                         break;
                     case "unanamity":
-                        Initiate.vote_system = Votelogger.Majority_System.unam;
+                        Vote_Logger.vote_system = Votelogger.Majority_System.unam;
                         break;
                     default:
                         break;
@@ -320,14 +327,14 @@ namespace European_Calculator
         //          it modifies the text to say if the bill has passed or not
         private void If_Pass(double percfor)
         {
-            var countfor = from state in Initiate.EuCountries
+            var countfor = from state in Vote_Logger.EuCountries
                        where state.Position.ToString() == "Yes"
                        select state;
-            var Notparticipating = from state in Initiate.EuCountries
+            var Notparticipating = from state in Vote_Logger.EuCountries
                                   where state.Position.ToString() == "Notparticpating"
                                   select state;
-            Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Initiate.EuCountries.Count() - 1) - Notparticipating.Count()) * Initiate.Majority_Choose(Initiate.vote_system,true))))}";
-            if (Initiate.Population_Check(Initiate.vote_system, percfor) && Initiate.Member_States_Check(Initiate.vote_system, Notparticipating.Count(), countfor.Count()-1))
+            Mem_Pass.Content = $"Member States to Pass: {Convert.ToInt32(Math.Ceiling((double)(((Vote_Logger.EuCountries.Count() - 1) - Notparticipating.Count()) * Vote_Logger.Majority_Choose(Vote_Logger.vote_system,true))))}";
+            if (Vote_Logger.Population_Check(Vote_Logger.vote_system, percfor) && Vote_Logger.Member_States_Check(Vote_Logger.vote_system, Notparticipating.Count(), countfor.Count()-1))
                 Pass_Marker.Content = "Approved";
             else
                 Pass_Marker.Content = "Denied";
@@ -340,7 +347,7 @@ namespace European_Calculator
         private void Population_Stat_Updater()
         {
             int countYe=0, countNo=0, countAbs=0, countNotParc= 0;
-            foreach (var State in Initiate.EuCountries)
+            foreach (var State in Vote_Logger.EuCountries)
             {
 
                 switch (State.Position.ToString())
@@ -362,7 +369,7 @@ namespace European_Calculator
                 }
                 //totalPercentage += Math.Round((double)(ParticpatingCountry / PercentageParticpating), 2);
             }
-            double PercentageParticpating = Convert.ToInt32(Initiate.PopulationTotal- countNotParc);
+            double PercentageParticpating = Convert.ToInt32(Vote_Logger.PopulationTotal- countNotParc);
             double PercYes =  Math.Round((double)(100*(countYe / PercentageParticpating)), 2), 
                 PercNo = Math.Round((double)(100*(countNo / PercentageParticpating)),2), 
                 Percabs = Math.Round((double)(100*(countAbs / PercentageParticpating)),2);
@@ -370,7 +377,7 @@ namespace European_Calculator
             Pop_Yes.Content = $"Yes: {PercYes}%";
             Pop_No.Content = $"No: {PercNo}%";
             Pop_Abs.Content = $"Abstain: {Percabs}%";
-            Pop_Pass.Content = $"Population to Pass: {Initiate.Majority_Choose(Initiate.vote_system, false)*100}%";
+            Pop_Pass.Content = $"Population to Pass: {Vote_Logger.Majority_Choose(Vote_Logger.vote_system, false)*100}%";
             
 
         }
